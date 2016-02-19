@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Byzombies - Welcome</title>
+	<script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		function createIframe(){
+		  var i = document.createElement("iframe");
+		  i.src = "http://byzombies:8989";
+		  document.getElementById("main").appendChild(i);
+		  $("aside").css("display","visible");
+		};
+
+		function createNewIframe(id, port){
+			if($('#' + id).length == 0){
+			  var i = document.createElement("iframe");
+			  i.id = id;
+			  if(id != "cal")
+			  	i.src = "media.byzombies.xyz:" + port;
+			  else
+			  	i.src = "https://calendar.google.com/calendar/embed?src=0jkboah8k27dg94q8avgaid365gu46e4%40import.calendar.google.com&ctz=Pacific/Auckland&showTitle=0&showTabs=0&showCalendars=0&showPrint=0";
+			  $("iframe").css("display", "none");
+			  document.getElementById("main").appendChild(i);
+			}else{
+				$("iframe").css("display", "none");
+				$('#' + id).toggle(true);
+			}
+		};
+
+		function dieAllFrames() {
+			$("iframe").css("display", "none");
+		}
+	</script>
+
+	<style>
+		* {
+			font-family: 'Audiowide';
+		}
+		html,body{
+			position:absolute;
+			min-height: 100%;
+			min-width: 100%;
+			margin: 0;
+		}
+		header{
+			width:100%;
+			background: red;
+			height: 80px;
+		}
+		aside{
+			position: absolute;
+			width: 4%;
+			bottom: 0;
+			opacity: 0;
+			background: #222;
+			z-index: 6000;
+			transition: all .25s ease-in-out;
+		}
+
+		aside:hover{
+			opacity: 1;
+		}
+		main{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: #333;
+		}
+
+		main h1 {
+			text-align: center;
+			height: 10vh;
+			margin: 0;
+			color: #FFF;
+			box-sizing: border-box;
+			padding: 20px;
+		}
+
+		main iframe {
+			width: 100%;
+			height: 100vh;
+			border: 0;
+			z-index: 5000;
+			position: absolute;
+			top: 0;
+		}
+		main iframe::-webkit-scrollbar { width: 0 !important }
+
+		aside ul{
+			list-style: none;
+			margin: 0;
+			padding: 0 10px;
+		}
+
+		aside li i{
+			height: 44px;
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+			display: block;
+			width: 100%;
+			color: #fff;
+			text-align: center;
+		}
+		aside .fa {
+			font-size: 2em;
+			margin: 10px 0 10px 0;
+		}
+		aside li i + span{
+		    display: inline;
+		    opacity: 0;
+		    position: absolute;
+		    transform: translateY(10%);
+		    background: rgba(0,0,0,.5);
+		    padding: 12px;
+		    color: #FFF;
+		    white-space: nowrap;
+		    left: calc(100% + 10px);
+		    border-bottom-right-radius: 4px;
+		    border-top-right-radius: 4px;
+		    z-index: 7000;
+		}
+		aside li i + span:before {
+			height: 8px;
+			width: 8px;
+			position: absolute;
+			left: -10px;
+			display: inline-block;
+			content: "";
+			border-top-left-radius: 0px;
+			width: 0;
+			height: 0;
+			border-top: 10px solid transparent;
+			border-bottom: 10px solid transparent;
+			border-right: 10px solid rgba(0,0,0,.5);
+		}
+		aside li:hover i + span{
+			opacity: 1;
+		}
+
+		.wrapper {
+			display: flex;
+			flex: 1 1 100%;
+			height: 90vh;
+			align-items: center;
+			align-content: center;
+			flex-wrap: wrap;
+			flex-direction: row;
+		}
+		.column {
+			display: flex;
+			flex: 1 1 100%;
+			flex-basis: calc(50%);
+			height: 50%;
+			justify-content: center;
+			flex-direction: column;
+			position:relative;
+			cursor: pointer;
+		}
+
+		.column:hover .inner{
+			color: goldenrod;
+		}
+
+		.column:hover:before {
+			background-size: 110%;
+			-webkit-filter: grayscale(.5) blur(0px);
+		}
+		.column:hover:after {
+			content: "";
+			height: 100%;
+			width: 100%;
+			top: 0;
+			position:absolute;
+			background:rgba(0,0,0,.8);
+		}
+		.column:before{
+			content: "";
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			-webkit-filter: grayscale(.9) blur(3px);
+			background-size: 100%;
+			top: 0;
+			transition: .5s all ease-in-out;
+			background-position: center center;
+			background-repeat: no-repeat;
+		}
+		.one:before{
+			background-image: url("https://unsplash.it/1920/1080/?random");
+		}
+		.two:before{
+			background-image: url("https://unsplash.it/1920/1079/?random");
+		}
+		.three:before{
+			background-image: url("https://unsplash.it/1920/1081/?random");
+		}
+		.four:before{
+			background-image: url("https://unsplash.it/1920/1078/?random");
+		}
+		.column .inner {
+			margin: 0 auto;
+			color: #FFF;
+			font-size: 4em;
+			z-index: 999;
+			text-shadow: 3px 3px 3px #333;
+			transition: .5s all ease-in-out;
+		}
+		.column .inner i {
+			margin: 0 .5em;
+		}
+	</style>
+	<link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+	<aside>
+		<ul>
+			
+			<li><i class="home fa fa-home" onclick="dieAllFrames()"></i><span>Home</span></li>
+			<li><i class="pms fa fa-play" onclick="createNewIframe('pms', '32400\\web')"></i><span>Watch Plex</span></li>
+			<li><i class="pms fa fa-plus-circle" onclick="createNewIframe('pr', '3000')"></i><span>Request shows / Movies</span></li>
+			<li><i class="pms fa fa-calendar" onclick="createNewIframe('cal', '')"></i><span>Calendar</span></li>
+			<li><i class="home fa fa-bars" onclick="dismiss()"></i></li>
+		</ul>
+	</aside>
+	<main id="main">
+		<h1>Byzombies Media Center</h1>
+		<div class="wrapper">
+			<div class="column one" onclick="createNewIframe('pms', '32400\\web')"><div class="inner" ><i class="fa fa-play"></i>Watch</div></div>
+			<div class="column two" onclick="createNewIframe('pr', '3000')" ><div class="inner"><i class="fa fa-plus-circle"></i>Request</div></div>
+			<div class="column three" onclick="createNewIframe('cal', '')"><div class="inner"><i class="fa fa-calendar"></i>Calendar</div></div>
+			<div class="column four"><div class="inner">Request</div></div>
+		</div>
+	</main>
+</body>
+</html>
