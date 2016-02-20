@@ -24,6 +24,7 @@
     			  i.id = id;
     			  if(id != "cal")
     			  	i.src = "http://media.byzombies.xyz:" + port;
+    			  	// i.src = "http://byzombies:" + port;
     			  else
     			  	i.src = "https://calendar.google.com/calendar/embed?src=0jkboah8k27dg94q8avgaid365gu46e4%40import.calendar.google.com&ctz=Pacific/Auckland&showTitle=0&showTabs=0&showCalendars=0&showPrint=0";
     			  $("iframe").css("display", "none");
@@ -169,6 +170,22 @@
     			color: goldenrod;
     		}
 
+    		.column .inner ul{
+    			list-style: none;
+    			visibility: hidden;
+    			opacity: 0;
+    			padding: 0;
+    			margin: 0;
+    			max-height: 0;
+    			transition: .5s all ease-in-out;
+    			color: #FFF;
+    		}
+
+    		.column .inner ul li{
+    			display: inline-block;
+    			font-size: .5em;
+    		}
+
     		.column:hover:before {
     			background-size: 110%;
     			-webkit-filter: grayscale(.5) blur(0px);
@@ -193,17 +210,23 @@
     			background-position: center center;
     			background-repeat: no-repeat;
     		}
+
+    		.column:hover ul{
+    			opacity: 1;
+    			visibility: visible;
+    			max-height: auto;
+    		}
     		.one:before{
-    			background-image: url("https://unsplash.it/1920/1080/?random");
+    			background-image: url("./avengers-hd-wallpapers-2.jpg");
     		}
     		.two:before{
-    			background-image: url("https://unsplash.it/1920/1079/?random");
+    			background-image: url("./abstract-wallpapers-pictures-STAY022.jpg");
     		}
     		.three:before{
-    			background-image: url("https://unsplash.it/1920/1081/?random");
+    			background-image: url("./open-notebook.jpg");
     		}
     		.four:before{
-    			background-image: url("https://unsplash.it/1920/1078/?random");
+    			background-image: url("./falling-money-wallpaper.jpg");
     		}
     		.column .inner {
     			margin: 0 auto;
@@ -212,6 +235,7 @@
     			z-index: 999;
     			text-shadow: 3px 3px 3px #333;
     			transition: .5s all ease-in-out;
+    			text-align:center;
     		}
     		.column .inner i {
     			margin: 0 .5em;
@@ -234,10 +258,28 @@
     	<main id="main">
     		<h1>Byzombies Media Center</h1>
     		<div class="wrapper">
-    			<div class="column one" onclick="createNewIframe('pms', '32400\\web')"><div class="inner" ><i class="fa fa-play"></i>Watch</div></div>
-    			<div class="column two" onclick="createNewIframe('pr', '3000')" ><div class="inner"><i class="fa fa-plus-circle"></i>Request</div></div>
-    			<div class="column three" onclick="createNewIframe('cal', '')"><div class="inner"><i class="fa fa-calendar"></i>Calendar</div></div>
-    			<div class="column four"><div class="inner">Request</div></div>
+    			<div class="column one" onclick="createNewIframe('pms', '32400\\web')"><div class="inner" ><i class="fa fa-play"></i>Watch
+    				<ul>
+    					<li><i class="fa fa-film"></i>Movies</li>
+    					<li><i class="fa fa-television"></i>Television</li>
+    					<li><i class="fa fa-at"></i>Anime</li>
+    				</ul>
+    			</div></div>
+    			<div class="column two" onclick="createNewIframe('pr', '3000')" ><div class="inner"><i class="fa fa-plus-circle"></i>Request
+    			<ul>
+    				<li><i class="fa fa-binoculars"></i>Can't find what you want?</li>
+    			</ul>
+    			</div></div>
+    			<div class="column three" onclick="createNewIframe('cal', '')"><div class="inner"><i class="fa fa-calendar"></i>Calendar
+    			<ul>
+    				<li><i class="fa fa-clock-o"></i>TV release dates</li>
+    			</ul>
+    			</div></div>
+    			<div class="column four"><div class="inner"><i class="fa fa-usd"></i>Donate
+    			<ul>
+    				<li><i class="fa fa-thumbs-o-up"></i>Liam wants lunch</li>
+    			</ul>
+    			</div></div>
     		</div>
     	</main>
     </body>
